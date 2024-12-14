@@ -12,36 +12,6 @@ def main():
     # Display the menu for user to choose an option.
     menu(words, scoreboard)
 
-# Handle the game on new game.
-def play(word, tries):
-    # Create a list of dots with the length of the word.
-    toBeGuessed = ['.' for _ in range(len(word))]
-
-    # Iterate through the Guessing word till there is no dot anymore in the word.
-    # The tries will not be handled, so it's unlimited.
-    while '.' in toBeGuessed:
-        currentGuess = input(f"{' '.join(toBeGuessed)} ")
-        toBeGuessed = checkCurrentGuess(word, toBeGuessed, currentGuess)
-
-        tries += 1 # Woow, increment a variable like tries++ is not possible in python :O
-
-    guessedWord = ''.join(toBeGuessed)
-    # Print the final word after guessing is finished
-    print(guessedWord)
-
-    return guessedWord, tries
-
-# Return the updated guessing word after currentGuess.
-def checkCurrentGuess(word, toBeGuessed, currentGuess):
-    for i in range(len(word)):
-        if word[i] == currentGuess.lower():
-            toBeGuessed[i] = currentGuess
-
-    return toBeGuessed
-
-def showScoreboard(scoreboard):
-    print(scoreboard)
-
 def menu(words, scoreboard):
     tries = 0
     word = random.choice(words)
@@ -83,6 +53,36 @@ def menu(words, scoreboard):
             exit()
         case _:
             exit()
+
+# Handle the game on new game.
+def play(word, tries):
+    # Create a list of dots with the length of the word.
+    toBeGuessed = ['.' for _ in range(len(word))]
+
+    # Iterate through the Guessing word till there is no dot anymore in the word.
+    # The tries will not be handled, so it's unlimited.
+    while '.' in toBeGuessed:
+        currentGuess = input(f"{' '.join(toBeGuessed)} ")
+        toBeGuessed = checkCurrentGuess(word, toBeGuessed, currentGuess)
+
+        tries += 1 # Woow, increment a variable like tries++ is not possible in python :O
+
+    guessedWord = ''.join(toBeGuessed)
+    # Print the final word after guessing is finished
+    print(guessedWord)
+
+    return guessedWord, tries
+
+# Return the updated guessing word after currentGuess.
+def checkCurrentGuess(word, toBeGuessed, currentGuess):
+    for i in range(len(word)):
+        if word[i] == currentGuess.lower():
+            toBeGuessed[i] = currentGuess
+
+    return toBeGuessed
+
+def showScoreboard(scoreboard):
+    print(scoreboard)
 
 
 # Initialize the main function.
