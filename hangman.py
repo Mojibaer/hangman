@@ -36,8 +36,7 @@ def menu(words, scoreboard):
             # remove the guessedWord from the words list.
             words.remove(guessedWord)
 
-            # Reinitialize the word and tries.
-            tries = 0
+            # Reinitialize the word.
             word = random.choice(words)
 
             # Call menu function again.
